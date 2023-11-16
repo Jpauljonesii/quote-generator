@@ -1,5 +1,9 @@
 "use strict";
 
+
+
+
+
 const quotesArray = [
   {
     content: 'All action results from thought, so it is thoughts that matter.',
@@ -32,3 +36,30 @@ const quotesArray = [
     dateModified: '2023-04-14',
   },
 ];
+let randomQuoteObject = getRandomQuote(0,quotesArray.length);
+
+
+function getRandomQuote(min, max) {
+  const randomInt = Math.floor(Math.random() * (max - min) + min);
+  return quotesArray[randomInt];
+};
+
+  for (let i = 0; i < quotesArray.length; i++) {
+    console.log(quotesArray[i].content, quotesArray[i].author);
+  };
+
+
+function handleGetQuote() {
+ randomQuoteObject = getRandomQuote(0, quotesArray.length);
+  document.getElementById('getquote').innerHTML = randomQuoteObject.content;
+  document.getElementById('author').innerHTML = randomQuoteObject.author;
+};
+
+document.getElementById('getquote').onclick = function () {
+  myFunction();
+};
+
+function handleSaveQuote (){
+  
+
+}
