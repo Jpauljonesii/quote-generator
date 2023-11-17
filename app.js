@@ -1,8 +1,4 @@
-"use strict";
-
-
-
-
+'use strict';
 
 const quotesArray = [
   {
@@ -36,30 +32,50 @@ const quotesArray = [
     dateModified: '2023-04-14',
   },
 ];
-let randomQuoteObject = getRandomQuote(0,quotesArray.length);
-
+let randomQuoteObject = getRandomQuote(0, quotesArray.length);
 
 function getRandomQuote(min, max) {
   const randomInt = Math.floor(Math.random() * (max - min) + min);
   return quotesArray[randomInt];
-};
+}
 
-  for (let i = 0; i < quotesArray.length; i++) {
-    console.log(quotesArray[i].content, quotesArray[i].author);
-  };
-
+for (let i = 0; i < quotesArray.length; i++) {
+  console.log(quotesArray[i].content, quotesArray[i].author);
+}
 
 function handleGetQuote() {
- randomQuoteObject = getRandomQuote(0, quotesArray.length);
+  randomQuoteObject = getRandomQuote(0, quotesArray.length);
   document.getElementById('getquote').innerHTML = randomQuoteObject.content;
   document.getElementById('author').innerHTML = randomQuoteObject.author;
-};
+}
 
 document.getElementById('getquote').onclick = function () {
   myFunction();
 };
 
-function handleSaveQuote (){
-  
+//let state = parsed
 
+function handleSaveQuote() {
+  console.log('handleSaveQuote');
+  let quote = document.getElementById('getquote').textContent;
+  console.log(quote);
+  //check if local storage already has saved quote
+  //let existingQuote = localStorage.getItem("savedquote")
+
+  //if it does replace old quote with new quote or keep both
+  localStorage.setItem('savedquote', quote);
+  let savedItem = localStorage.getItem('savedquote');
+  console.log(savedItem);
+  return savedItem;
 }
+
+handleSaveQuote();
+/*function setData (){
+  const stringifiedState = JSON.stringify(state);
+  localStorage.handleGetQuote = stringifiedState
+}
+
+function handleSaveButton(event){
+  event.preventDefault();
+}
+*/
