@@ -78,7 +78,7 @@ document.getElementById('getquote').onclick = function () {
 function handleSaveQuote() {
   console.log('handleSaveQuote');
   let quote = document.getElementById('getquote').textContent;
-  console.log(quote);
+  //console.log(quote);
   //check if local storage already has saved quote
   //let existingQuote = localStorage.getItem("savedquote")
 
