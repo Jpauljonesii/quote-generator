@@ -1,6 +1,6 @@
 'use strict';
 
-const quotesArray = [
+/*const quotesArray = [
   {
     content: 'All action results from thought, so it is thoughts that matter.',
     author: 'Sai Baba',
@@ -42,8 +42,28 @@ function getRandomQuote(min, max) {
 for (let i = 0; i < quotesArray.length; i++) {
   console.log(quotesArray[i].content, quotesArray[i].author);
 }
+*/
+const quoteText = document.getElementById('getquote'),
+      quoteAuthor = document.getElementById('author'), 
+      quoteBtn = document.getElementById('btn');
 
-function handleGetQuote() {
+function getRandomQuote(){
+fetch('https://api.quotable.io/random')
+  .then((res) => res.json())
+  .then((data) => {
+    quoteText.textContent = data.content;
+    quoteAuthor.textContent = data.author
+  });
+
+  
+}
+
+getRandomQuote();
+
+quoteBtn.addEventListener('click', ()=>{
+  getRandomQuote();
+})
+/*function handleGetQuote() {
   randomQuoteObject = getRandomQuote(0, quotesArray.length);
   document.getElementById('getquote').innerHTML = randomQuoteObject.content;
   document.getElementById('author').innerHTML = randomQuoteObject.author;
@@ -52,7 +72,7 @@ function handleGetQuote() {
 document.getElementById('getquote').onclick = function () {
   myFunction();
 };
-
+*/
 //let state = parsed
 
 function handleSaveQuote() {
@@ -70,6 +90,8 @@ function handleSaveQuote() {
 }
 
 handleSaveQuote();
+
+
 /*function setData (){
   const stringifiedState = JSON.stringify(state);
   localStorage.handleGetQuote = stringifiedState
